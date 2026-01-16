@@ -24,11 +24,13 @@ const ManagePost = ({ dispatch }) => {
   const [posts, setPosts] = useState(null)
   const [searchParams] = useSearchParams()
   const [update, setUpdate] = useState(false)
+  
   const fetchPosts = async (params) => {
     dispatch(setPaymentStatus(false))
     const response = await apiGetPosts(params)
     if (response.success) setPosts(response.posts)
   }
+
   const debounceValue = useDebounce(keyword, 500)
   useEffect(() => {
     const params = Object.fromEntries([...searchParams])
@@ -37,6 +39,7 @@ const ManagePost = ({ dispatch }) => {
     if (debounceValue) params.keyword = debounceValue
     fetchPosts(params)
   }, [searchParams, update, debounceValue, isPaymentSuccess])
+  
   const render = () => {
     setUpdate(!update)
   }

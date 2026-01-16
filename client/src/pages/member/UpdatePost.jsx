@@ -12,7 +12,7 @@ import { toast } from "react-toastify"
 import { modal } from "@/redux/appSlice"
 import { apiGetDistrictsFromProvinceId, apiGetWardsFromDistrictId } from "@/apis/app"
 
-const UpdatePost = ({ dispatch, editPost, render }) => {
+const UpdatePost = ({ dispatch, editPost, rend1er }) => {
   const {
     formState: { errors },
     setValue,

@@ -14,11 +14,12 @@ import useDebounce from "@/hooks/useDebounce"
 import UpdatePost from "../member/UpdatePost"
 
 const ManagePosts = ({ dispatch }) => {
-  const { setValue, watch } = useForm()
-  const keyword = watch("keyword")
+  const { setValue, watch } = useForm() // Sử dụng react-hook-form để quản lý form
+  const keyword = watch("keyword")  // Theo dõi giá trị của trường keywor
   const [posts, setPosts] = useState(null)
   const [searchParams] = useSearchParams()
   const [update, setUpdate] = useState(false)
+  //gọi api lấy dữ liệu bài đăng từ server
   const fetchPosts = async (params) => {
     const response = await apiGetPosts(params)
     if (response.success) setPosts(response.posts)
@@ -83,7 +84,7 @@ const ManagePosts = ({ dispatch }) => {
               </tr>
             </thead>
             <tbody className="text-sm">
-              {posts?.rows?.map((el) => (
+              {posts?.rows?.map((el) => ( //lấy ds bài đăng dùng map duyệt qua
                 <tr className="border" key={el.id}>
                   <td className="p-2 text-center">{el.title}</td>
                   <td className="p-2 text-center">{el.author?.name}</td>
